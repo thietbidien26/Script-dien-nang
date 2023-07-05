@@ -5,7 +5,7 @@
         var linkElement = linkElements[i];
         var relAttribute = linkElement.getAttribute("rel");
         var hrefAttribute = linkElement.getAttribute("href");
-        if (relAttribute === "canonical" && (hrefAttribute === "https://diennangdongnai.com:443/" || hrefAttribute === "https://diennangdongnai.com")) {
+        if (relAttribute === "canonical" && (hrefAttribute === "https://diennangdongnai.com:443/" || hrefAttribute === "https://diennangdongnai.com/")) {
           linkElement.parentNode.removeChild(linkElement);
         }
       }
