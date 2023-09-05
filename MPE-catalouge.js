@@ -1,4 +1,26 @@
 <script>
+        $(document).ready(function() {
+            $(".box_news").after("<hr>");
+        });
+    </script>
+
+  <script>
+        $(document).ready(function() {
+            // Tạo đoạn mã HTML cho nút "Mua Ngay"
+            var buyNowButtonHTML = `
+              <div class="container mt-5 text-center">
+    <button class="red-gradient-button btn-lg" onclick="navigateToLink()">
+      Mua Ngay
+    </button>
+  </div>
+            `;
+
+            // Chèn đoạn mã HTML vào sau phần tử có lớp "gias"
+            $(".gias").after(buyNowButtonHTML);
+        });
+    </script>
+
+<script>
 document.addEventListener('DOMContentLoaded', function () {
     const gallery = document.querySelector('.thuvien-catalouge-mpe');
     let zoomedImg = null; // Biến để theo dõi hình ảnh đang được zoom
@@ -37,12 +59,13 @@ document.addEventListener('DOMContentLoaded', function () {
         imgElement.style.zIndex = '999999';
     }
 
-    // Hàm để zoom ảnh
-    function zoomImage(imgElement) {
-        bringToFront(imgElement); // Đưa ảnh lên trên cùng
-        imgElement.style.transform = 'scale(2)'; // Tăng kích thước ảnh lên gấp đôi
-        imgElement.style.transition = 'transform 0.2s'; // Thêm hiệu ứng transition
-    }
+  // Hàm để zoom ảnh
+function zoomImage(imgElement) {
+    bringToFront(imgElement); // Đưa ảnh lên trên cùng
+    imgElement.style.transform = 'scale(3)'; // Tăng kích thước ảnh lên gấp đôi
+    imgElement.style.transformOrigin = 'center top'; // Canh giữa theo chiều dọc
+    imgElement.style.transition = 'transform 0.2s'; // Thêm hiệu ứng transition
+}
 
     // Hàm để tắt zoom ảnh
     function unzoomImage(imgElement) {
