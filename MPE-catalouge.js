@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Hàm để đưa ảnh lên trên cùng
     function bringToFront(imgElement) {
-        imgElement.style.zIndex = '9999';
+        imgElement.style.zIndex = '999999';
     }
 
     // Hàm để zoom ảnh
