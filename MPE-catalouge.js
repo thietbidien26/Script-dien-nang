@@ -1,26 +1,4 @@
 <script>
-        $(document).ready(function() {
-            $(".box_news").after("<hr>");
-        });
-    </script>
-
-  <script>
-        $(document).ready(function() {
-            // Tạo đoạn mã HTML cho nút "Mua Ngay"
-            var buyNowButtonHTML = `
-              <div class="container mt-5 text-center">
-    <button class="red-gradient-button btn-lg" onclick="navigateToLink()">
-      Mua Ngay
-    </button>
-  </div>
-            `;
-
-            // Chèn đoạn mã HTML vào sau phần tử có lớp "gias"
-            $(".gias").after(buyNowButtonHTML);
-        });
-    </script>
-
-<script>
 document.addEventListener('DOMContentLoaded', function () {
     const gallery = document.querySelector('.thuvien-catalouge-mpe');
     let zoomedImg = null; // Biến để theo dõi hình ảnh đang được zoom
@@ -62,7 +40,182 @@ document.addEventListener('DOMContentLoaded', function () {
   // Hàm để zoom ảnh
 function zoomImage(imgElement) {
     bringToFront(imgElement); // Đưa ảnh lên trên cùng
-    imgElement.style.transform = 'scale(3)'; // Tăng kích thước ảnh lên gấp đôi
+    imgElement.style.transform = 'scale(4)'; // Tăng kích thước ảnh lên gấp đôi
+    imgElement.style.transformOrigin = 'center top'; // Canh giữa theo chiều dọc
+    imgElement.style.transition = 'transform 0.2s'; // Thêm hiệu ứng transition
+}
+
+    // Hàm để tắt zoom ảnh
+    function unzoomImage(imgElement) {
+        imgElement.style.transform = 'scale(1)'; // Trả về kích thước ban đầu
+        imgElement.style.transition = 'transform 0.2s'; // Thêm hiệu ứng transition
+        imgElement.style.zIndex = 'auto'; // Đặt lại chỉ số z để ảnh không nằm trên cùng
+    }
+});
+</script>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const gallery = document.querySelector('.thuvien-catalouge-tien-phat');
+    let zoomedImg = null; // Biến để theo dõi hình ảnh đang được zoom
+
+    // Tạo các hình ảnh và thêm vào gallery
+    for (let i = 1; i <= 37; i++) {
+        const img = document.createElement('img');
+        img.src = `https://diennangdongnai.com/upload/images/Catalouge/Tien-Phat/catalouge-tien-phat-2023-${i.toString().padStart(2, '0')}.jpg`;
+        gallery.appendChild(img);
+
+
+        // Thêm sự kiện click cho mỗi hình ảnh
+        img.addEventListener('click', function () {
+            if (zoomedImg === img) {
+                unzoomImage(img);
+                zoomedImg = null;
+            } else {
+                zoomImage(img);
+                if (zoomedImg !== null) {
+                    unzoomImage(zoomedImg);
+                }
+                zoomedImg = img;
+            }
+        });
+    }   
+
+    // Thêm sự kiện click ra ngoài để tắt zoom
+    document.addEventListener('click', function (event) {
+        if (zoomedImg !== null && !zoomedImg.contains(event.target)) {
+            unzoomImage(zoomedImg);
+            zoomedImg = null;
+        }
+    });
+
+    // Hàm để đưa ảnh lên trên cùng
+    function bringToFront(imgElement) {
+        imgElement.style.zIndex = '999999';
+    }
+
+  // Hàm để zoom ảnh
+function zoomImage(imgElement) {
+    bringToFront(imgElement); // Đưa ảnh lên trên cùng
+    imgElement.style.transform = 'scale(4)'; // Tăng kích thước ảnh lên gấp đôi
+    imgElement.style.transformOrigin = 'center top'; // Canh giữa theo chiều dọc
+    imgElement.style.transition = 'transform 0.2s'; // Thêm hiệu ứng transition
+}
+
+    // Hàm để tắt zoom ảnh
+    function unzoomImage(imgElement) {
+        imgElement.style.transform = 'scale(1)'; // Trả về kích thước ban đầu
+        imgElement.style.transition = 'transform 0.2s'; // Thêm hiệu ứng transition
+        imgElement.style.zIndex = 'auto'; // Đặt lại chỉ số z để ảnh không nằm trên cùng
+    }
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const gallery = document.querySelector('.thuvien-catalouge-daphaco');
+    let zoomedImg = null; // Biến để theo dõi hình ảnh đang được zoom
+
+    // Tạo các hình ảnh và thêm vào gallery
+    for (let i = 1; i <= 12; i++) {
+        const img = document.createElement('img');
+        img.src = `https://diennangdongnai.com/upload/images/Catalouge/catalouge-daphaco-2023-${i.toString().padStart(2, '0')}.jpg`;
+        gallery.appendChild(img);
+
+
+        // Thêm sự kiện click cho mỗi hình ảnh
+        img.addEventListener('click', function () {
+            if (zoomedImg === img) {
+                unzoomImage(img);
+                zoomedImg = null;
+            } else {
+                zoomImage(img);
+                if (zoomedImg !== null) {
+                    unzoomImage(zoomedImg);
+                }
+                zoomedImg = img;
+            }
+        });
+    }   
+
+    // Thêm sự kiện click ra ngoài để tắt zoom
+    document.addEventListener('click', function (event) {
+        if (zoomedImg !== null && !zoomedImg.contains(event.target)) {
+            unzoomImage(zoomedImg);
+            zoomedImg = null;
+        }
+    });
+
+    // Hàm để đưa ảnh lên trên cùng
+    function bringToFront(imgElement) {
+        imgElement.style.zIndex = '999999';
+    }
+
+  // Hàm để zoom ảnh
+function zoomImage(imgElement) {
+    bringToFront(imgElement); // Đưa ảnh lên trên cùng
+    imgElement.style.transform = 'scale(4)'; // Tăng kích thước ảnh lên gấp đôi
+    imgElement.style.transformOrigin = 'center top'; // Canh giữa theo chiều dọc
+    imgElement.style.transition = 'transform 0.2s'; // Thêm hiệu ứng transition
+}
+
+    // Hàm để tắt zoom ảnh
+    function unzoomImage(imgElement) {
+        imgElement.style.transform = 'scale(1)'; // Trả về kích thước ban đầu
+        imgElement.style.transition = 'transform 0.2s'; // Thêm hiệu ứng transition
+        imgElement.style.zIndex = 'auto'; // Đặt lại chỉ số z để ảnh không nằm trên cùng
+    }
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const gallery = document.querySelector('.thuvien-catalouge-panasonic');
+    let zoomedImg = null; // Biến để theo dõi hình ảnh đang được zoom
+
+    // Tạo các hình ảnh và thêm vào gallery
+    for (let i = 1; i <= 72; i++) {
+        const img = document.createElement('img');
+        img.src = `https://diennangdongnai.com/upload/images/Catalouge/Panasonic-nanoco/catalouge-nanoco-va-panasonic-2023-${i.toString().padStart(2, '0')}.jpg`;
+        gallery.appendChild(img);
+
+
+        // Thêm sự kiện click cho mỗi hình ảnh
+        img.addEventListener('click', function () {
+            if (zoomedImg === img) {
+                unzoomImage(img);
+                zoomedImg = null;
+            } else {
+                zoomImage(img);
+                if (zoomedImg !== null) {
+                    unzoomImage(zoomedImg);
+                }
+                zoomedImg = img;
+            }
+        });
+    }   
+
+    // Thêm sự kiện click ra ngoài để tắt zoom
+    document.addEventListener('click', function (event) {
+        if (zoomedImg !== null && !zoomedImg.contains(event.target)) {
+            unzoomImage(zoomedImg);
+            zoomedImg = null;
+        }
+    });
+
+    // Hàm để đưa ảnh lên trên cùng
+    function bringToFront(imgElement) {
+        imgElement.style.zIndex = '999999';
+    }
+
+  // Hàm để zoom ảnh
+function zoomImage(imgElement) {
+    bringToFront(imgElement); // Đưa ảnh lên trên cùng
+    imgElement.style.transform = 'scale(4)'; // Tăng kích thước ảnh lên gấp đôi
     imgElement.style.transformOrigin = 'center top'; // Canh giữa theo chiều dọc
     imgElement.style.transition = 'transform 0.2s'; // Thêm hiệu ứng transition
 }
